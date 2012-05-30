@@ -1,1 +1,0 @@
-AUTH_SALT = "PuRpLePoNyPeNgUiNpAnTs"
