@@ -7,9 +7,10 @@ class User < ActiveRecord::Base
   validates_presence_of :email
   validates_uniqueness_of :email
 
-  after_create generate_token
+  after_create :generate_token
 
   def generate_token
-    self.auth_token = Digest::SHA1.hexdigest("#{current_user.id}" + AUTH_SALT)
+    self.auth_token = Digest::SHA1.hexdigest(self.id.to_s + AUTH_SALT)
+    self.save
   end
 end

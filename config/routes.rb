@@ -1,4 +1,6 @@
 HackchatAuth::Application.routes.draw do
+  get "authorizations/new"
+
   get "password_resets/create"
 
   get "password_resets/edit"
