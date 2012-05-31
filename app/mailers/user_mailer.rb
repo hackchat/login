@@ -1,5 +1,5 @@
 class UserMailer < ActionMailer::Base
-  default from: "melanie.gilman@hungrymachine.com"
+  default from: "melanie.gilman@livingsocial.com"
 
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
@@ -8,8 +8,8 @@ class UserMailer < ActionMailer::Base
   #
   def reset_password_email(user)
     @user = user
-    @url  = "http://0.0.0.0:3000/password_resets/#{user.reset_password_token}/edit"
+    @url  = t(:password_email)
     mail(:to => user.email,
-       :subject => "Your password has been reset")
+       :subject => t(:password_reset))
   end
 end

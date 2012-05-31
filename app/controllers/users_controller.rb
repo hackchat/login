@@ -11,7 +11,7 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     if @user.save
       auto_login(@user, should_remember=false)
-      redirect_to login_path, :notice => "Signed up!"
+      redirect_to login_path, :notice => t(:signed_up)
     else
       render :new
     end
