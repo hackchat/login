@@ -11,9 +11,9 @@
 set -e
 
 # Feel free to change any of the following variables for your app:
-TIMEOUT{TIMEOUT-60}
-APP_ROOThome/deployer/apps/hackchat_auth/current
-PIDAPP_ROOT/tmp/pids/unicorn.pid
+TIMEOUT=${TIMEOUT-60}
+APP_ROOT=/home/deployer/apps/hackchat_auth/current
+PID=$APP_ROOT/tmp/pids/unicorn.pid
 CMD="cd $APP_ROOT; bundle exec unicorn -D -c $APP_ROOT/config/unicorn.rb -E production"
 AS_USER=deployer
 set -u
