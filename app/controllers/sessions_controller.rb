@@ -5,9 +5,10 @@ class SessionsController < ApplicationController
   def create
     user = login(params[:email], params[:password], params[:remember_me])
     if user
-      redirect_back_or_to root_url, :notice => t(:logged_in)
+      redirect_back_or_to login_path, :notice => t(:logged_in)
     else
-      redirect_to_back :notice => t(:invalid)
+      flash[:alert] = t(:invalid)
+      render :new
     end
   end
 
