@@ -19,7 +19,7 @@ class PasswordResetsController < ApplicationController
     if @user.change_password!(params[:user][:password])
       redirect_to(root_path, :notice => t(:password_updated))
     else
-      render :action = t(:edit)
+      render :action => t(:edit)
     end
   end
 end
