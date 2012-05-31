@@ -57,10 +57,10 @@ restart|reload)
 upgrade)
   if sig USR2 && sleep 2 && sig 0 && oldsig QUIT
   then
-    nTIMEOUT
+    n=$TIMEOUT
     while test -s $OLD_PIN && test $n -ge 0
     do
-      printf '.' && sleep 1 && n(( $n - 1 ))
+      printf '.' && sleep 1 && n=$(( $n - 1 ))
     done
     echo
 
