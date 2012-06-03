@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120530221004) do
+ActiveRecord::Schema.define(:version => 20120531213806) do
 
   create_table "users", :force => true do |t|
     t.string   "email"
@@ -28,6 +28,8 @@ ActiveRecord::Schema.define(:version => 20120530221004) do
     t.datetime "reset_password_token_expires_at"
     t.datetime "reset_password_email_sent_at"
     t.string   "auth_token"
+    t.string   "first_name"
+    t.string   "last_name"
   end
 
   add_index "users", ["last_logout_at", "last_activity_at"], :name => "index_users_on_last_logout_at_and_last_activity_at"

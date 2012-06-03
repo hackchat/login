@@ -24,3 +24,5 @@ es:
   logged_in: "Conectado!"
   invalid: "E-mail o la contraseña no es válida!"
   logged_out: "Sesión!"
+  first_name: "Nombre de Pila"
+  last_name: "Apellido"

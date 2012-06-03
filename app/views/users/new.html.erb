@@ -1,6 +1,6 @@
 <h1><%=t :sign_up_header %></h1>
 
-<%= form_for @user do |f| %>
+<%= form_for @user, :validate => true do |f| %>
   <% if @user.errors.any? %>
     <div class="error_messages">
       <h2>Form is invalid</h2>
@@ -11,6 +11,14 @@
       </ul>
     </div>
   <% end %>
+  <div class="field">
+    <%= f.label t(:first_name) %>
+    <%= f.text_field :first_name %>
+  </div>
+  <div class="field">
+    <%= f.label t(:last_name) %>
+    <%= f.text_field :last_name %>
+  </div>
   <div class="field">
     <%= f.label t(:email) %>
     <%= f.text_field :email %>

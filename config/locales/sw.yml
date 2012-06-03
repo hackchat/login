@@ -24,3 +24,5 @@ sw:
   logged_in: "Watumiaji katika!"
   invalid: "Barua pepe au password lilikuwa batili!"
   logged_out: "Logged nje!"
+  first_name: "Jina la Kwanza"
+  last_name: "Jina la Mwisho"

@@ -24,3 +24,5 @@ fr:
   logged_in: "Connecté!"
   invalid: "E-mail ou mot de passe est invalide!"
   logged_out: "Déconnecté!"
+  first_name: "Prénom"
+  last_name: "Nom de Famille"
