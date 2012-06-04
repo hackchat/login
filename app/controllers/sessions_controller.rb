@@ -1,30 +1,24 @@
 class SessionsController < ApplicationController
-  def new
+  def show
+    @user = current_user
+    if @user
+      render :json @user.to_json
+    else
+      render status: :unauthorized
+    end
   end
 
   def create
-    user = login(params[:email], params[:password], params[:remember_me])
-    if user
-      redirect_back_or_to login_path, :notice => t(:logged_in)
+    @user = login(params[:email], params[:password], params[:remember_me])
+    if @user
+      render status: :ok
     else
-      flash[:alert] = t(:invalid)
-      render :new
+      render status: :unauthorized, :json false
     end
   end
 
   def destroy
     logout
-    redirect_to root_url, :notice => t(:logged_out)
+    render status: :ok, :json true
   end
 end
-
-
-# Chat is going to ask auth if i have a user
-# Auth is going to say no
-# Chat is going to say well let's get a user
-# Redirect to Auth
-# Auth is going to login and set session
-# Auth will redirect back to Chat
-# Chat will say "Do I have a user?"
-# Auth has a session
-# Auth responds with "Yeah, here he/she is"
