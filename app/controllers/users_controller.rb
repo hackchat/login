@@ -4,13 +4,17 @@ class UsersController < ApplicationController
   def show
   end
 
+  def new
+    @user = User.new
+  end
+
   def create
     @user = User.new(params[:user])
     if @user.save
       auto_login(@user)
-      render status: :created
+      redirect_to root_path
     else
-      render status: :bad_request
+      render "new"
     end
   end
 

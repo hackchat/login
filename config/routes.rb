@@ -1,15 +1,4 @@
 HackchatAuth::Application.routes.draw do
-  get "authorizations/new"
-
-  get "password_resets/create"
-
-  get "password_resets/edit"
-
-  get "password_resets/update"
-
-  get "sessions/new"
-
-  get "users/new"
 
   get "logout" => "sessions#destroy", :as => "logout"
   get "login" => "sessions#new", :as => "login"
@@ -19,4 +8,5 @@ HackchatAuth::Application.routes.draw do
   get "secret" => "home#secret", :as => "secret"
   root :to => "home#index"
   resources :password_resets
+  get "logged_in" => "sessions#logged_in", :as => "logged_in"
 end

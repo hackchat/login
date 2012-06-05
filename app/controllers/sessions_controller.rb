@@ -11,9 +11,9 @@ class SessionsController < ApplicationController
   def create
     @user = login(params[:email], params[:password], params[:remember_me])
     if @user
-      render status: :created
+      redirect_to login_path, :notice => "signed in!"
     else
-      render status: :unauthorized
+      render "new"
     end
   end
 
@@ -21,4 +21,22 @@ class SessionsController < ApplicationController
     logout
     render status: :ok
   end
+
+  # def logged_in
+  #   # raise params.inspect
+  #   if @user = User.find_by_auth_token(params["auth_token"])
+  #     render status: :ok
+  #   else
+  #     render status: :bad_request
+  #   end
+  # end
+
+  # def logged_in
+  #   if current_user && current_user.auth_token == params["auth_token"]
+  #     render status: :ok, json: true
+  #   else
+  #     render status: :ok, json: false
+  #   end
+  # end
+
 end
