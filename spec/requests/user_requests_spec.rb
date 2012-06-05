@@ -91,8 +91,43 @@ describe "user", type: :api do
         password: password,
         password_confirmation: "ubv893kjvb84jvb83jdjnw93w"
         }.as_json
-        response.status.should == 400
+      response.status.should == 400
     end
+  end
+
+  describe "update user" do
+    let!(:user_1) { Fabricate :user }
+
+    it "updates a user's firstname" do
+      put "/users/#{user_1.auth_token}.json", :user => {
+        first_name: "Jay",
+        }.as_json
+      response.status.should == 204  
+      User.find_by_first_name("Jay").should_not be_nil
+      get "/users/#{user_1.auth_token}.json"
+      response.body.should include "Jay"
+    end
+
+    it "updates a user's last name" do
+      put "/users/#{user_1.auth_token}.json", :user => {
+        last_name: "Son",
+        }.as_json
+      response.status.should == 204  
+      User.find_by_last_name("Son").should_not be_nil
+      get "/users/#{user_1.auth_token}.json"
+      response.body.should include "Son"
+    end
+
+    it "updates a user's email address" do
+      put "/users/#{user_1.auth_token}.json", :user => {
+        email: "new@email.com",
+        }.as_json
+      response.status.should == 204  
+      User.find_by_email("new@email.com").should_not be_nil
+      get "/users/#{user_1.auth_token}.json"
+      response.body.should include "new@email.com"
+    end
+
   end
 
   describe "destroy user" do
