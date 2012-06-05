@@ -2,7 +2,7 @@ class SessionsController < ApplicationController
   def show
     @user = current_user
     if @user
-      render :json @user.to_json
+      render status: :ok
     else
       render status: :unauthorized
     end
@@ -11,14 +11,14 @@ class SessionsController < ApplicationController
   def create
     @user = login(params[:email], params[:password], params[:remember_me])
     if @user
-      render status: :ok
+      render status: :created
     else
-      render status: :unauthorized, :json false
+      render status: :unauthorized
     end
   end
 
   def destroy
     logout
-    render status: :ok, :json true
+    render status: :ok
   end
 end

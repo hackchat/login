@@ -1,34 +1,39 @@
 class UsersController < ApplicationController
+  before_filter :find_user, except: :create
 
   def show
-    @user = User.find_by_auth_token(params[:id])
   end
 
   def create
     @user = User.new(params[:user])
     if @user.save
-      auto_login(@user, should_remember=false)
+      auto_login(@user)
+      render status: :created
     else
-      render status: :forbidden
+      render status: :bad_request
     end
   end
 
   def update
-    @user = User.find_by_auth_token(params[:id])
     if @user.update_attributes(params[:user])
-      render status: :created, json: true
+      render status: :no_content
+    else
+      render status: :bad_request
+    end
+  end
+
+  def destroy
+    if @user.destroy
+      render status: :no_content
     else
       render status: :forbidden
     end
   end
 
-  def destroy
+  private
+
+  def find_user
     @user = User.find_by_auth_token(params[:id])
-    if @user.destroy
-      render status: :ok, json: true
-    else
-      render status: :forbidden
-    end
   end
 
 end
