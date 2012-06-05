@@ -134,7 +134,7 @@ describe "user", type: :api do
     it "destroys the user" do
       delete "/users/#{user.auth_token}.json"
       response.status.should == 204
-      User.find_by_auth_token(user.auth_token).should be_nil
+      User.find_by_auth_token(user.auth_token).should be_is_a(NilClass)
     end
   end
 
