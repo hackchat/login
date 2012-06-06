@@ -41,7 +41,7 @@ describe "user", type: :api do
         password: password,
         password_confirmation: password
       }.as_json
-      response.status.should == 201
+      (response.status/100).should == 2
     end
 
     it "rejects a user without an email address" do
@@ -51,7 +51,7 @@ describe "user", type: :api do
         password: password,
         password_confirmation: password
       }.as_json
-      response.status.should == 400
+      (response.status/100).should == 4
     end
 
     it "rejects a user without a first name" do
@@ -61,7 +61,7 @@ describe "user", type: :api do
         password: password,
         password_confirmation: password
       }.as_json
-      response.status.should == 400
+      (response.status/100).should == 4
     end
 
     it "rejects a user without a last name" do
@@ -71,7 +71,7 @@ describe "user", type: :api do
         password: password,
         password_confirmation: password
       }.as_json
-      response.status.should == 400
+      (response.status/100).should == 4
     end
 
     it "rejects a user without a password" do
@@ -80,7 +80,7 @@ describe "user", type: :api do
         last_name: last_name,
         email: email,
       }.as_json
-      response.status.should == 400
+      (response.status/100).should == 4
     end
 
     it "rejects mismatched password confirmations" do
@@ -91,7 +91,7 @@ describe "user", type: :api do
         password: password,
         password_confirmation: "ubv893kjvb84jvb83jdjnw93w"
         }.as_json
-      response.status.should == 400
+      (response.status/100).should == 4
     end
   end
 

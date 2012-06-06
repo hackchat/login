@@ -1,21 +1,22 @@
 class UsersController < ApplicationController
+  respond_to :html, :json
   before_filter :find_user, except: :create
 
   def show
+    respond_with @user
   end
 
   def new
     @user = User.new
+    respond_with @user
   end
 
   def create
     @user = User.new(params[:user])
     if @user.save
       auto_login(@user)
-      redirect_to root_path
-    else
-      render "new"
     end
+    respond_with @user
   end
 
   def update

@@ -22,21 +22,4 @@ class SessionsController < ApplicationController
     render status: :ok
   end
 
-  # def logged_in
-  #   # raise params.inspect
-  #   if @user = User.find_by_auth_token(params["auth_token"])
-  #     render status: :ok
-  #   else
-  #     render status: :bad_request
-  #   end
-  # end
-
-  # def logged_in
-  #   if current_user && current_user.auth_token == params["auth_token"]
-  #     render status: :ok, json: true
-  #   else
-  #     render status: :ok, json: false
-  #   end
-  # end
-
 end
