@@ -2,14 +2,14 @@ require "bundler/capistrano"
 
 server "108.171.191.137", :web, :app, :db, primary: true
 
-set :application, "hackchat_auth"
+set :application, "login"
 set :user, "deployer"
 set :deploy_to, "/home/#{user}/apps/#{application}"
 set :deploy_via, :remote_cache
 set :use_sudo, false
 
 set :scm, "git"
-set :repository, "git@github.com:tkiefhaber/#{application}.git"
+set :repository, "git@github.com:hackchat/#{application}.git"
 set :branch, "master"
 
 default_run_options[:pty] = true
