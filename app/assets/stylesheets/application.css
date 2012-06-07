@@ -21,3 +21,24 @@
 .message{
   padding-left: 10px;
 }
+
+#login_title{
+  color: #cb4b16;
+  font-family: helvetica;
+
+}
+
+.field{
+  color: #cb4b16;
+  font-family: helvetica;
+  margin: 15px;
+}
+
+.navbar-inner{
+  background-color: #073642;
+}
+
+body
+{
+  background-color: #002b36;
+}
