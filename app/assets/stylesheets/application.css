@@ -22,20 +22,34 @@
   padding-left: 10px;
 }
 
-#login_title{
-  color: #cb4b16;
-  font-family: helvetica;
-
+#email{
+  width:275px;
+  height:25px;
 }
 
+#password{
+  width:275px;
+  height:25px;
+}
+
+#login_title{
+  color: #b58900;
+  font-family: helvetica;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.input-forms {
+  width:275px;
+  height:25px !important;
+}
 .field{
   color: #cb4b16;
   font-family: helvetica;
   margin: 15px;
 }
-
-.navbar-inner{
-  background-color: #073642;
+.pull_right{
+  text-align:right;
 }
 
 body

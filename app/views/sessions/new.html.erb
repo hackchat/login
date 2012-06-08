@@ -1,29 +1,18 @@
-<head>
-</head>
-<body class="body">
-  <div class="row">
-    <div class="span3"></div>
-    <div class="span6" id="login_title">
-      <h1>Log in to HackChat!</h1>
+<div style="margin: 0 auto; width:475px;">
+  <div class="well">
+    <div id="login">
+      <%= render "login_form" %>
+    </div>
+    <div id="forgot_password" style="display:none;">
+      <%= render 'forgot_password_form' %>
+    </div>
+    <div id="sign_up_form" style="display:none;">
+      <%= render 'sign_up' %>
+    </div>
+    <div class="pull_right">
+      <a href="#" id='login_form' style="display:none;">Login</a>
+      <a href="#" id='forgot_password_toggle'>Forgot Password</a>
+      <a href="#" id='sign_up_toggle'>Sign up!</a>
     </div>
   </div>
-
-  <form class="well_form-inline"><%= form_tag sessions_path do %>
-    <div class="field">
-      <%= label_tag t(:email) %>
-      <%= text_field_tag :email, params[:email] %>
-    </div>
-    <div class="field">
-      <%= label_tag t(:password) %>
-      <%= password_field_tag :password %>
-    </div>
-    <div class="field">
-      <%= check_box_tag t(:remember_me), 1, params[:remember_me] %>
-      <%= label_tag :remember_me %>
-    </div>
-    <div class="actions"><%= submit_tag t(:log_in) %></div>
-  <% end %></form>
-
-  <h4><%= t(:forgot_password) %></h4>
-  <%= render 'forgot_password_form' %>
-</body>
+</div>
