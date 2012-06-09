@@ -1,0 +1,47 @@
+[32m.[0m[31mF[0m[31mF[0m[31mF[0m[32m.[0m[32m.[0m[31mF[0m[31mF[0m
+
+Failures:
+
+  1) PasswordResetsController GET 'create' returns http success
+     [31mFailure/Error:[0m [31mresponse.should be_success[0m
+       [31mexpected success? to return true, got false[0m
+[36m     # ./spec/controllers/password_resets_controller_spec.rb:8:in `block (3 levels) in <top (required)>'[0m
+
+  2) PasswordResetsController GET 'edit' returns http success
+     [31mFailure/Error:[0m [31mresponse.should be_success[0m
+       [31mexpected success? to return true, got false[0m
+[36m     # ./spec/controllers/password_resets_controller_spec.rb:15:in `block (3 levels) in <top (required)>'[0m
+
+  3) PasswordResetsController GET 'update' returns http success
+     [31mFailure/Error:[0m [31mget 'update'[0m
+     [31mNoMethodError:[0m
+       [31mundefined method `[]' for nil:NilClass[0m
+[36m     # ./app/controllers/password_resets_controller.rb:18:in `update'[0m
+[36m     # ./spec/controllers/password_resets_controller_spec.rb:21:in `block (3 levels) in <top (required)>'[0m
+
+  4) UserMailer reset_password_email renders the headers
+     [31mFailure/Error:[0m [31mlet(:mail) { UserMailer.reset_password_email }[0m
+     [31mArgumentError:[0m
+       [31mwrong number of arguments (0 for 1)[0m
+[36m     # ./app/mailers/user_mailer.rb:9:in `reset_password_email'[0m
+[36m     # ./spec/mailers/user_mailer_spec.rb:5:in `block (3 levels) in <top (required)>'[0m
+[36m     # ./spec/mailers/user_mailer_spec.rb:8:in `block (3 levels) in <top (required)>'[0m
+
+  5) UserMailer reset_password_email renders the body
+     [31mFailure/Error:[0m [31mlet(:mail) { UserMailer.reset_password_email }[0m
+     [31mArgumentError:[0m
+       [31mwrong number of arguments (0 for 1)[0m
+[36m     # ./app/mailers/user_mailer.rb:9:in `reset_password_email'[0m
+[36m     # ./spec/mailers/user_mailer_spec.rb:5:in `block (3 levels) in <top (required)>'[0m
+[36m     # ./spec/mailers/user_mailer_spec.rb:14:in `block (3 levels) in <top (required)>'[0m
+
+Finished in 0.12638 seconds
+[31m8 examples, 5 failures[0m
+
+Failed examples:
+
+[31mrspec ./spec/controllers/password_resets_controller_spec.rb:6[0m [36m# PasswordResetsController GET 'create' returns http success[0m
+[31mrspec ./spec/controllers/password_resets_controller_spec.rb:13[0m [36m# PasswordResetsController GET 'edit' returns http success[0m
+[31mrspec ./spec/controllers/password_resets_controller_spec.rb:20[0m [36m# PasswordResetsController GET 'update' returns http success[0m
+[31mrspec ./spec/mailers/user_mailer_spec.rb:7[0m [36m# UserMailer reset_password_email renders the headers[0m
+[31mrspec ./spec/mailers/user_mailer_spec.rb:13[0m [36m# UserMailer reset_password_email renders the body[0m
