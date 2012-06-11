@@ -1,8 +1,8 @@
 root = "/home/deployer/apps/login/current"
 working_directory root
 pid "#{root}/tmp/pids/unicorn.pid"
-stderr_path "#{root}/log/unicorn.log"
-stdout_path "#{root}/log/unicorn.log"
+stderr_path "#{root}/log/unicorn_login.log"
+stdout_path "#{root}/log/unicorn_login.log"
 
 listen "/tmp/unicorn.login.sock"
 listen 7004
