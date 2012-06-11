@@ -1,3 +1,5 @@
+require 'digest/md5'
+
 class User < ActiveRecord::Base
   authenticates_with_sorcery!
   attr_accessible :first_name, :last_name, :email,
@@ -15,5 +17,11 @@ class User < ActiveRecord::Base
   def generate_token
     self.auth_token = Digest::SHA1.hexdigest(self.id.to_s + AUTH_SALT)
     self.save
+  end
+
+  def avatar
+    email_address = self.email.downcase
+    hash = Digest::MD5.hexdigest(email_address)
+    image_src = "http://www.gravatar.com/avatar/#{hash}"
   end
 end

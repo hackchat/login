@@ -15,6 +15,7 @@ class SessionsController < ApplicationController
     else
       render "new"
     end
+    session[:user_token] = @user.auth_token
   end
 
   def destroy
