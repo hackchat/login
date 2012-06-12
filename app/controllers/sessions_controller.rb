@@ -11,11 +11,11 @@ class SessionsController < ApplicationController
   def create
     @user = login(params[:email], params[:password], params[:remember_me])
     if @user
+      session[:user_token] = @user.auth_token
       redirect_to login_path, :notice => "signed in!"
     else
       render "new"
     end
-    session[:user_token] = @user.auth_token
   end
 
   def destroy
