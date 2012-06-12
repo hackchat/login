@@ -12,8 +12,8 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     if @user.save
       auto_login(@user)
+      redirect_to redirect_chat
     end
-    @user
   end
 
   def update

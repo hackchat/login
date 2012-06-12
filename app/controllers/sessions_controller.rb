@@ -28,12 +28,5 @@ class SessionsController < ApplicationController
     render status: :ok
   end
 
-  def redirect_chat
-    if Rails.env.production?
-      "http://hackchat.in"
-    else
-      "http://localhost:2000"
-    end
-  end
 
 end
