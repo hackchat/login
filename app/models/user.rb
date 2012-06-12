@@ -13,6 +13,7 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :email
 
   after_create :generate_token
+  AUTH_SALT = "i<3Melanie"
 
   def generate_token
     self.auth_token = Digest::SHA1.hexdigest(self.id.to_s + AUTH_SALT)
