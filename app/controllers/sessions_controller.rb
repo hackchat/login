@@ -16,8 +16,8 @@ class SessionsController < ApplicationController
   def create
     @user = login(params[:email], params[:password], params[:remember_me])
     if @user
-      redirect_to redirect_chat, flash[:notice] => "signed in!"
       session[:user_token] = @user.auth_token
+      redirect_to redirect_chat, flash[:notice] => "signed in!"
     else
       flash[:notice] = "Password or email WRONG!"
       render "new"
