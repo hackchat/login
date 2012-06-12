@@ -11,9 +11,12 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     if @user.save
-      session[:user_token] = @user.auth_token
       auto_login(@user)
+      session[:user_token] = @user.auth_token
       redirect_to redirect_chat
+    else
+      flash[:notice] = "ERROR"
+      render "new"
     end
   end
 
