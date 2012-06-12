@@ -1,14 +1,11 @@
 class UsersController < ApplicationController
-  respond_to :html, :json
-  before_filter :find_user, except: :create
+  before_filter :find_user, only: [:show, :update, :destroy]
 
   def show
-    respond_with @user
   end
 
   def new
     @user = User.new
-    respond_with @user
   end
 
   def create
@@ -16,7 +13,7 @@ class UsersController < ApplicationController
     if @user.save
       auto_login(@user)
     end
-    respond_with @user
+    @user
   end
 
   def update

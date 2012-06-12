@@ -6,7 +6,7 @@ HackchatAuth::Application.routes.draw do
   resources :users
   resources :sessions
   get "secret" => "home#secret", :as => "secret"
-  root :to => "home#index"
+  root :to => "sessions#new"
   resources :password_resets
   get "logged_in" => "sessions#logged_in", :as => "logged_in"
 end
