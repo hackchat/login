@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+
   def show
     @user = current_user
     if @user

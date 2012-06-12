@@ -11,6 +11,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     if @user.save
+      session[:user_token] = @user.auth_token
       auto_login(@user)
       redirect_to redirect_chat
     end
