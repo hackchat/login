@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_filter :find_user, only: [:show, :update, :destroy]
 
   def show
+    render status: :bad_request unless @user
   end
 
   def new
@@ -9,11 +10,11 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(params[:user])
-    if @user.save
-      auto_login(@user)
-      session[:user_token] = @user.auth_token
-      redirect_to redirect_chat
+    user = User.new(params[:user])
+    if user.save
+      auto_login(user)
+      session[:user_token] = user.auth_token
+      redirect_to CHAT_FRONT
     else
       flash[:notice] = "ERROR"
       render "new"
