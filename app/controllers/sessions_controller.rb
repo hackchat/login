@@ -10,8 +10,6 @@ class SessionsController < ApplicationController
   end
 
   def new
-    Rails.logger.error session.inspect
-    Rails.logger.error current_user.inspect
     redirect_to redirect_chat if current_user
   end
 
