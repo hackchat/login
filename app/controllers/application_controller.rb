@@ -6,12 +6,4 @@ class ApplicationController < ActionController::Base
     I18n.locale = params[:locale] || I18n.default_locale
   end
 
-  def redirect_chat
-    if Rails.env.production?
-      "http://hackchat.in"
-    else
-      "http://localhost:2000"
-    end
-  end
-
 end
