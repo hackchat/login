@@ -3,7 +3,7 @@ require 'digest/md5'
 class User < ActiveRecord::Base
   authenticates_with_sorcery!
   attr_accessible :first_name, :last_name, :email,
-                  :password, :password_confirmation, :auth_token
+                  :password, :password_confirmation, :user_token
 
   validates_confirmation_of :password
   validates_presence_of :password, :on => :create
@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
   AUTH_SALT = "i<3Melanie"
 
   def generate_token
-    self.auth_token = Digest::SHA1.hexdigest(self.id.to_s + AUTH_SALT)
+    self.user_token = Digest::SHA1.hexdigest(self.id.to_s + AUTH_SALT)
     self.save
   end
 

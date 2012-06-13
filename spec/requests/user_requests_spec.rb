@@ -5,7 +5,7 @@ describe "user", type: :api do
 
   describe "get user" do
     before :each do
-      get "/users/#{user.auth_token}.json"
+      get "/users/#{user.user_token}.json"
       @response = response
       @user_response = JSON.parse(@response.body)
     end
@@ -99,32 +99,32 @@ describe "user", type: :api do
     let!(:user_1) { Fabricate :user }
 
     it "updates a user's firstname" do
-      put "/users/#{user_1.auth_token}.json", :user => {
+      put "/users/#{user_1.user_token}.json", :user => {
         first_name: "Jay",
         }.as_json
-      response.status.should == 204  
+      response.status.should == 204
       User.find_by_first_name("Jay").should_not be_nil
-      get "/users/#{user_1.auth_token}.json"
+      get "/users/#{user_1.user_token}.json"
       response.body.should include "Jay"
     end
 
     it "updates a user's last name" do
-      put "/users/#{user_1.auth_token}.json", :user => {
+      put "/users/#{user_1.user_token}.json", :user => {
         last_name: "Son",
         }.as_json
-      response.status.should == 204  
+      response.status.should == 204
       User.find_by_last_name("Son").should_not be_nil
-      get "/users/#{user_1.auth_token}.json"
+      get "/users/#{user_1.user_token}.json"
       response.body.should include "Son"
     end
 
     it "updates a user's email address" do
-      put "/users/#{user_1.auth_token}.json", :user => {
+      put "/users/#{user_1.user_token}.json", :user => {
         email: "new@email.com",
         }.as_json
-      response.status.should == 204  
+      response.status.should == 204
       User.find_by_email("new@email.com").should_not be_nil
-      get "/users/#{user_1.auth_token}.json"
+      get "/users/#{user_1.user_token}.json"
       response.body.should include "new@email.com"
     end
 
@@ -132,7 +132,7 @@ describe "user", type: :api do
 
   describe "destroy user" do
     it "destroys the user" do
-      delete "/users/#{user.auth_token}.json"
+      delete "/users/#{user.user_token}.json"
       response.status.should == 204
       User.find_by_auth_token(user.auth_token).should be_is_a(NilClass)
     end

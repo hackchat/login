@@ -13,7 +13,7 @@ class UsersController < ApplicationController
     user = User.new(params[:user])
     if user.save
       auto_login(user)
-      session[:user_token] = user.auth_token
+      session[:user_token] = user.user_token
       redirect_to CHAT_FRONT
     else
       flash[:notice] = "ERROR"
@@ -40,7 +40,7 @@ class UsersController < ApplicationController
   private
 
   def find_user
-    @user = User.find_by_auth_token(params[:id])
+    @user = User.find_by_user_token(params[:id])
   end
 
 end

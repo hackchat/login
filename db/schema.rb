@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120531213806) do
+ActiveRecord::Schema.define(:version => 20120613134223) do
 
   create_table "users", :force => true do |t|
     t.string   "email"
@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(:version => 20120531213806) do
     t.string   "reset_password_token"
     t.datetime "reset_password_token_expires_at"
     t.datetime "reset_password_email_sent_at"
-    t.string   "auth_token"
+    t.string   "user_token"
     t.string   "first_name"
     t.string   "last_name"
   end
