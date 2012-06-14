@@ -9,4 +9,5 @@ HackchatAuth::Application.routes.draw do
   root :to => "sessions#new"
   resources :password_resets
   get "logged_in" => "sessions#logged_in", :as => "logged_in"
+  resources :emails
 end
