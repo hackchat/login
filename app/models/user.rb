@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
   AUTH_SALT = "i<3Melanie"
 
   def generate_token
-    self.user_token = Digest::SHA1.hexdigest(self.id.to_s + AUTH_SALT)
+    self.user_token = Digest::SHA1.hexdigest(self.email + AUTH_SALT)
   end
 
   def avatar
