@@ -12,12 +12,11 @@ class User < ActiveRecord::Base
   validates_presence_of :last_name
   validates_uniqueness_of :email
 
-  after_create :generate_token
+  before_create :generate_token
   AUTH_SALT = "i<3Melanie"
 
   def generate_token
     self.user_token = Digest::SHA1.hexdigest(self.id.to_s + AUTH_SALT)
-    self.save
   end
 
   def avatar
