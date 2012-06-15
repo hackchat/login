@@ -10,7 +10,6 @@ class SessionsController < ApplicationController
   end
 
   def new
-    redirect_to CHAT_FRONT if current_user
   end
 
   def create
@@ -26,7 +25,8 @@ class SessionsController < ApplicationController
 
   def destroy
     logout
-    render status: :ok
+    reset_session
+    redirect_to login_path
   end
 
 end
